@@ -53,6 +53,8 @@ const JSSERVE_CONFIGURATION = (
     verbose = Ref(false)
 )
 
+const DEPENDENCIES = Dependencies()
+
 """
     configure_server!(;
             listen_url::String=JSSERVE_CONFIGURATION.listen_url[],
@@ -150,6 +152,15 @@ function has_html_display()
 end
 
 function __init__()
+    DEPENDENCIES.MsgPackLib = Asset(dependency_path("msgpack.min.js"))
+    DEPENDENCIES.PakoLib = Asset(dependency_path("pako_inflate.min.js"))
+    DEPENDENCIES.JSServeLib = Dependency(:JSServe, [dependency_path("JSServe.js")])
+    DEPENDENCIES.Base64Lib = Dependency(:Base64, [dependency_path("Base64.js")])
+
+    DEPENDENCIES.MarkdownCSS = Asset(dependency_path("markdown.css"))
+    DEPENDENCIES.TailwindCSS = Asset(dependency_path("tailwind.min.css"))
+    DEPENDENCIES.Styling = Asset(dependency_path("styled.css"))
+
     url = if haskey(ENV, "JULIA_WEBIO_BASEURL")
         ENV["JULIA_WEBIO_BASEURL"]
     else

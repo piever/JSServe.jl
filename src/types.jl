@@ -202,3 +202,14 @@ struct Server
     routes::Routes
     websocket_routes::Routes
 end
+
+struct Dependencies
+    deps::Dict{Symbol, Union{Asset, Dependency}}
+end
+
+Dependencies() = Dependencies(Dict{Symbol, Union{Asset, Dependency}}())
+
+Base.getproperty(d::Dependencies, key::Symbol) = getfield(d, 1)[key]
+Base.propertynames(d::Dependencies) = keys(getfield(d, 1))
+
+Base.setproperty!(d::Dependencies, key::Symbol, value) = setindex!(getfield(d, 1), value, key)

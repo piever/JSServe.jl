@@ -253,7 +253,7 @@ end
 
         [^1]: This is the first footnote.
         """
-        return DOM.div(JSServe.MarkdownCSS, dom)
+        return DOM.div(JSServe.DEPENDENCIES.MarkdownCSS, dom)
     end
 
     testsession(test_handler, port=8555) do app

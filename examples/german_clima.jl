@@ -123,7 +123,7 @@ function handler(session, req)
     [Quellcode für Visualisierung](https://github.com/SimonDanisch/JSServe.jl/blob/master/examples/german_clima.jl)
     """
 
-    dom = DOM.div(JSServe.MarkdownCSS, JSServe.TailwindCSS, JSServe.Styling, markdown)
+    dom = DOM.div(JSServe.DEPENDENCIES.MarkdownCSS, JSServe.DEPENDENCIES.TailwindCSS, JSServe.DEPENDENCIES.Styling, markdown)
     # return dom
     return JSServe.record_state_map(session, dom).dom
 end

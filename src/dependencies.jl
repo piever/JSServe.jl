@@ -231,13 +231,3 @@ function url(asset::Asset, serializer::UrlSerializer=UrlSerializer())
         return asset.online_path
     end
 end
-
-
-const MsgPackLib = Asset(dependency_path("msgpack.min.js"))
-const PakoLib = Asset(dependency_path("pako_inflate.min.js"))
-const JSServeLib = Dependency(:JSServe, [dependency_path("JSServe.js")])
-const Base64Lib = Dependency(:Base64, [dependency_path("Base64.js")])
-
-const MarkdownCSS = Asset(dependency_path("markdown.css"))
-const TailwindCSS = Asset(dependency_path("tailwind.min.css"))
-const Styling = Asset(dependency_path("styled.css"))

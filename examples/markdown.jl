@@ -106,7 +106,7 @@ app = App() do
 
     ---
     """
-    return JSServe.DOM.div(JSServe.MarkdownCSS, JSServe.Styling, dom)
+    return JSServe.DOM.div(JSServe.DEPENDENCIES.MarkdownCSS, JSServe.DEPENDENCIES.Styling, dom)
 end
 
 display(app)

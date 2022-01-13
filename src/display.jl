@@ -124,10 +124,10 @@ function Base.show(io::IO, ::MIME"text/html", page::Page)
         """
     end
     deps = [
-        MsgPackLib,
-        PakoLib,
-        Base64Lib,
-        JSServeLib,
+        DEPENDENCIES.MsgPackLib,
+        DEPENDENCIES.PakoLib,
+        DEPENDENCIES.Base64Lib,
+        DEPENDENCIES.JSServeLib,
     ]
     page_init_dom = DOM.div(
         include_all_assets(page.session, deps)...,
@@ -236,7 +236,7 @@ function render_sub_session(parent_session, html_dom)
         # remove the sub-session specific js resources
         if closed
             obs_ids = collect(keys(session.observables))
-            JSServeLib.delete_observables(parent_session, obs_ids)
+            DEPENDENCIES.JSServeLib.delete_observables(parent_session, obs_ids)
             # since we deleted all obs shared with the parent session,
             # we can delete savely delete all of them from there
             # Note, that we previously added them all here!
@@ -351,7 +351,7 @@ function show_in_page(page::Page, app::App)
         # remove the sub-session specific js resources
         if closed
             obs_ids = collect(keys(session.observables))
-            JSServeLib.delete_observables(page_session, obs_ids)
+            DEPENDENCIES.JSServeLib.delete_observables(page_session, obs_ids)
             # since we deleted all obs shared with the parent session,
             # we can delete savely delete all of them from there
             # Note, that we previously added them all here!
@@ -449,10 +449,10 @@ function page_html(session::Session, html)
     html_body = DOM.html(
         DOM.head(
             DOM.meta(charset="UTF-8"),
-            include_asset(PakoLib, serializer),
-            include_asset(MsgPackLib, serializer),
-            include_asset(JSServeLib, serializer),
-            include_asset(Base64Lib, serializer),
+            include_asset(DEPENDENCIES.PakoLib, serializer),
+            include_asset(DEPENDENCIES.MsgPackLib, serializer),
+            include_asset(DEPENDENCIES.JSServeLib, serializer),
+            include_asset(DEPENDENCIES.Base64Lib, serializer),
             session_deps...
         ),
         DOM.body(

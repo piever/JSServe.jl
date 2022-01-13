@@ -23,7 +23,7 @@ app = App() do session
     color_swatch = DOM.div(class="h-6 w-6 p-1 rounded dropshadow", style=map(css_color, color))
     h_slider = styled_slider(hue_slider, color_swatch)
     sliders = rows(m_slider, h_slider)
-    dom =  DOM.div(JSServe.Styling, JSServe.TailwindCSS, columns(sliders, plot))
+    dom =  DOM.div(JSServe.DEPENDENCIES.Styling, JSServe.DEPENDENCIES.TailwindCSS, columns(sliders, plot))
     return JSServe.record_states(session, dom)
 end
 

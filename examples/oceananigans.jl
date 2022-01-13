@@ -78,7 +78,7 @@ function handler(s, r)
     $(scene)
 
     """
-    dom = DOM.div(JSServe.MarkdownCSS, JSServe.Styling, JSServe.TailwindCSS, markdown)
+    dom = DOM.div(JSServe.DEPENDENCIES.MarkdownCSS, JSServe.DEPENDENCIES.Styling, JSServe.DEPENDENCIES.TailwindCSS, markdown)
     # return dom
     return JSServe.record_state_map(s, dom).dom
 end

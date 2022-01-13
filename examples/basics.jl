@@ -109,7 +109,7 @@ app = App() do session::Session
     class = "p-2 rounded border-2 border-gray-600 m-4"
     v1 = DOM.div(slider.value, class=class)
     v2 = DOM.div(squared, class=class)
-    dom = DOM.div(JSServe.TailwindCSS, slider, sliderstyle, v1, v2)
+    dom = DOM.div(JSServe.DEPENDENCIES.TailwindCSS, slider, sliderstyle, v1, v2)
     # statemap for static serving
     return JSServe.record_state_map(session, (s, r)-> dom)
 end
